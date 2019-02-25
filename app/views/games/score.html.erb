@@ -1,0 +1,20 @@
+<h1>Result</h1>
+<p>
+<% if @error.nil? %>
+  <strong>Congratulations! </strong><%= @word %> is a valid English word!
+</p><p>This word scores <strong><%= @new_score %></strong>
+<% elsif @error == 'grid_error' %>
+  Sorry but <strong><%= @word %></strong> can't be built out of <%= @letters.join(', ') %>
+<% elsif @error == 'invalid_word' %>
+  Sorry but <strong><%= @word %></strong> does not seem to be a valid English word...
+<% end %>
+</p>
+
+<p>Your total score is <strong><%= session[:score] %></strong></p>
+
+<%= link_to 'Play again', new_path %>
+
+<br>
+<br>
+
+<%= link_to 'Reset score', reset_score_path %>
